@@ -1,0 +1,91 @@
+2015-9-15
+
+Todo:
+	1. 设计医生查询系统界面;
+	2. 设计数据库；
+	3. 根据数据库要求，设计model中的结构；
+	4. 确定数据转换工具功能－－－－－－根据数据要求；
+	5. 构建数据操作方式；
+
+2015-9-16
+	
+	设计数据库
+
+	doctor index:
+	{"doctorid": "123456", "host": "10.119.180.43", "port":"27017", "database": "ehr", "collection": "doctorinfo"}
+
+	patient index:
+
+	{"patientid":"123456", "host":"10.119.180.43", "port":"27017","database":"ehr", "collection":"patientinfo"}
+
+	流程
+
+	1. 医生账户密码登录；
+
+	2. center dbs －－－－> 根据doctor index table , 确定医生信息存储于哪个节点；
+
+	3. 根据查询到的节点信息， 到相应的node 上验证密码的正确性；
+
+	4. 验证成功，则医生登陆成功；否则，提示登录失败，重新登录；
+
+	5. 查询－－－－－主要根据病人ID，获取病人的病例信息－－－－查询条件： ID，时间， 医院
+
+	6. 获取病人授权－－－－－可以采用自主刷身份证的方式，然后系统自动获取病人的身份证ID，显示做保密处理；
+
+	7. 根据patient ID， 查询 patient index table，确定病人信息在哪些node；
+
+	8. 根据node信息，分别从各个节点上获取病人的信息；
+
+	9. 当病人的病例信息从node传输时，根据privacy strategy, 自动处理病人的病例信息；
+
+	10. 每次的查询操作都会被记录到log中；
+
+
+doctor index collection:
+
+doctorindex
+
+{"doctorid": "11111111", "host": "10.119.180.43", "port":"27017", "database": "ehrprivacy", "collection": "doctorinfo"}
+{"doctorid": "22222222", "host": "10.119.180.44", "port":"27017", "database": "ehrprivacy", "collection": "doctorinfo"}
+{"doctorid": "33333333", "host": "10.119.180.45", "port":"27017", "database": "ehrprivacy", "collection": "doctorinfo"}
+{"doctorid": "44444444", "host": "10.119.180.44", "port":"27017", "database": "ehrprivacy", "collection": "doctorinfo"}
+{"doctorid": "55555555", "host": "10.119.180.43", "port":"27017", "database": "ehrprivacy", "collection": "doctorinfo"}
+
+
+doctorinfo----need other informations
+
+43:
+{"doctorid":"11111111","password":"1111"}
+{"doctorid":"55555555","password":"5555"}
+
+44:
+{"doctorid":"22222222","password":"2222"}
+{"doctorid":"44444444","password":"4444"}
+45:
+{"doctorid":"33333333","password":"3333"}
+
+
+Patient index table collection:
+
+patientindex
+
+{"patientid": "11111111", "host": "10.119.180.43", "port":"27017", "database": "ehrprivacy", "collection": "patientrecord"}
+
+patientrecord:
+
+{"patientid":"11111111",.............others informations}
+
+PatientRecord: 病人病例的公共数据格式，包括三家医院病例的全部数据结构；
+
+DoctorRole: 医生信息， 主要是 ID 和 权限 ，主要用于控制record中可以显示的内容。
+
+key point :
+
+ How to control doctor access the patient record?
+
+ 
+
+
+
+
+
