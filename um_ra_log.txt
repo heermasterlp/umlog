@@ -168,19 +168,141 @@ Database :
 
 sql server password:
 
-	Software2014+-
+	Software2014=-
 
 
 
 
 2015-9-21
 	
-	load Data
+	load Data!!!
 
-	
+	1. Doctor information schema!
+		.the role of doctor ----- control the privacy of patient records.
+
+	2. Patient information schema!
+		. Add the password of patient --- patient can login to query thire's records.
+
+	2. Patient records schema!
+
+patient info json
+
+{"patient":{"IDCardNO":"","HospitalID":"","PatientName":"","HomeAddress":"","Sex":"","DateOfBirth":"","Nationality":"","BloodType":"","BloodTypeRH":""}}
+
+
+patient record json
+
+{"patientRecord":{"HospitalID":"","IDCardNO":"","HemodialysisChartRecordSet":{"Time":"","SystolicPressure":"","DiastolicPressure":"","Pulse":"","UF":"","Na":"","Temp":"","TMP":"","Ven":"","BloodFlow":""},"HemodialysisRecordSet":{"Date":"","Times":"","Machine":"","Dialyzer":"","BloodAccess":"","WeightPreD":"","DryWeight":"","TargetLoss":"","WeightPostD":"","DurationH":"","DurationM":"","Programme":"","KCI":"","NetLoss":"","DialysisBlockage":"","AntiCoagulation":"","AntiCoDosage":"","NSFlushVolume":"","RecommonDosage":"","VenoferDosage":"","DarbepoetinDosage":"","D3ZemplarDosage":"","GlucoseDosage":"","NSDosage":"","Hypotension":"","Hypertension":"","Arhythmia":"","Vomiting":"","Cramp":"","Comments":"","StartNurse":"","CheckNurse":"","CloseNurse":"","WithdrawalNurse":"","Doctor":""},"HBVaccineInjectionRecordSet":{"DateMonth0":"","DateMonth1":"","DateMonth2":"","DateMonth3":"","DateMonth4":"","DateMonth5":"","DateMonth6":"","DateMonth7":"","DateMonth8":"","DateMonth9":"","DateMonth10":""},"LaboratoryReportRecordSet":{"HB":"","HBsAg":"","AntiHBs":"","HBeAg":"","AntiHBe":"","AntiHCV":"","VDRL":""}}}
 
 
 
 
+HospitalID:
+
+	uh   gov   hw  
+
+collection: PatientInfo
+
+{"patient":{"IDCardNO":"73002","HospitalID":"hw","PatientName":"杨英英","HomeAddress":"贡士旦旬奴街","Sex":"M","DateOfBirth":""06/03/56,"Nationality":"东莞市","BloodType":"A","BloodTypeRH":"RH+"}}
+
+
+collecton:  PatientRecords
+
+{"patientRecord":
+				{
+					"HospitalID":"uh",
+
+					"IDCardNO":"73002",
+
+					"Date":"2013"
+
+					"HemodialysisChartRecordSet":
+													{
+														"Time":"1",
+														"SystolicPressure":"106-145",
+														"DiastolicPressure":"70-90",
+														"Pulse":"10bmp",
+														"UF":"10L",
+														"Na":"45mmol",
+														"Temp":"39",
+														"TMP":"105mmHg",
+														"Ven":"134mmHg",
+														"BloodFlow":"156ml/min"
+													},
+
+					"HemodialysisRecordSet":
+													{
+														"Date":"June 25, 2013",
+														"Times":"2",
+														"Machine":"B.Braun-Dialog",
+														"Dialyzer":"Gambro 17L",
+														"BloodAccess":"5.0",
+														"WeightPreD":"45kg",
+														"DryWeight":"45kg",
+														"TargetLoss":"6L",
+														"WeightPostD":"40kg",
+														"DurationH":"16",
+														"DurationM":"17",
+														"Programme":"APD",
+														"KCI":"145ml",
+														"NetLoss":"145ml",
+														"DialysisBlockage":"yes",
+														"AntiCoagulation":"no",
+														"AntiCoDosage":"145ml",
+														"NSFlushVolume":"145ml",
+														"RecommonDosage":"6KU",
+														"VenoferDosage":"yes",
+														"DarbepoetinDosage":"145mcg",
+														"D3ZemplarDosage":"145mcg",
+														"GlucoseDosage":"145ml",
+														"NSDosage":"145ml",
+														"Hypotension":"yes",
+														"Hypertension":"no",
+														"Arhythmia":"no",
+														"Vomiting":"yes",
+														"Cramp":"yes",
+														"Comments":"Sodium bicarbonate;normal calcium with glucose",
+														"StartNurse":"Tom",
+														"CheckNurse":"Tom",
+														"CloseNurse":"Tom",
+														"WithdrawalNurse":"Tom",
+														"Doctor":"Dr. Tom"
+													},
+
+					"HBVaccineInjectionRecordSet":
+													{
+														"DateMonth0":"14/06/2012",
+														"DateMonth1":"14/07/2012",
+														"DateMonth2":"14/08/2012",
+														"DateMonth3":"",
+														"DateMonth4":"",
+														"DateMonth5":"",
+														"DateMonth6":"14/12/2012",
+														"DateMonth7":"14/01/2013",
+														"DateMonth8":"14/02/2013",
+														"DateMonth9":"14/03/2013",
+														"DateMonth10":"14/04/2013"
+													},
+
+					"LaboratoryReportRecordSet":
+													{
+														"HB":"80.2g/L",
+														"HBsAg":"Negative",
+														"AntiHBs":"Positive",
+														"HBeAg":"N/A",
+														"AntiHBe":"N/A",
+														"AntiHCV":"Positive",
+														"VDRL":"Negative"
+													}
+					}
+}
+
+
+
+patient index collection: PatientIndex
+
+{"patient":{"Patient_ID":"73002","host":"10.119.180.43","port":"27017","database":"EhrPrivacy","collection":"PatientInfo"}}
+{"patient":{"Patient_ID":"73002","host":"10.119.180.44","port":"27017","database":"EhrPrivacy","collection":"PatientInfo"}}
+{"patient":{"Patient_ID":"73002","host":"10.119.180.45","port":"27017","database":"EhrPrivacy","collection":"PatientInfo"}}
 
 
