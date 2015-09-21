@@ -78,12 +78,107 @@ patientrecord:
 PatientRecord: 病人病例的公共数据格式，包括三家医院病例的全部数据结构；
 
 DoctorRole: 医生信息， 主要是 ID 和 权限 ，主要用于控制record中可以显示的内容。
-
+q
 key point :
 
  How to control doctor access the patient record?
 
  
+2015-9-18
+
+node1: hospitalId : 0001
+
+node2: hospitalId : 0002
+
+node3: hospitalId : 0003
+
+"hospital_ID":"0001"
+"hospital_ID":"0002"
+"hospital_ID":"0003"
+
+
+load data to all nodes;
+
+
+Database :
+
+	EhrPrivacy
+
+	host: 
+
+		42:
+			collection:
+
+				1. doctor index:   DoctorIndex
+
+						{"doctor":{"Doctor_ID":"11111111","host":"10.119.180.43","port":"27017","database":"EhrPrivacy","collection":"Doctor"}}
+
+						{"doctor":{"Doctor_ID":"11111111","host":"10.119.180.43","port":"27017","database":"EhrPrivacy","collection":"Doctor"}}
+
+						{"doctor":{"Doctor_ID":"11111111","host":"10.119.180.43","port":"27017","database":"EhrPrivacy","collection":"Doctor"}}
+
+
+				2. patient index:  PatientIndex
+
+						{"patient":{"Patient_ID":"11828","host":"10.119.180.43","port":"27017","database":"EhrPrivacy","collection":"Patient"}}
+
+						{"patient":{"Patient_ID":"11828","host":"10.119.180.44","port":"27017","database":"EhrPrivacy","collection":"Patient","recordcollection":"PatientRecords"}}
+						{"patient":{"Patient_ID":"11828","host":"10.119.180.45","port":"27017","database":"EhrPrivacy","collection":"Patient","recordcollection":"PatientRecords"}}
+
+				3. patient record index: PatientRecordIndex
+
+						{"patient":{"Patient_ID":"11828","host":"10.119.180.44","port":"27017","database":"EhrPrivacy","recordcollection":"PatientRecords"}}
+
+
+
+
+
+
+		43:
+			collection:
+				1.patient information: Patient
+				2. clical detection:   ClinicalDetection
+				3. examination:        Examination
+				4. doctor information: Doctor
+
+				{"doctor":{"Doctor_ID":"11111111","Name":"Jone","hospital_ID":"0001","Password":"1111"}}
+				{"doctor":{"Doctor_ID":"55555555","Name":"Liu","hospital_ID":"0001","Password":"5555"}}
+
+		44:
+			collection:
+				1.patient information: Patient
+				2. clical detection:   ClinicalDetection
+				3. examination:        Examination
+				4. doctor information: Doctor
+				
+				{"doctor":{"Doctor_ID":"22222222","Name":"Kim","hospital_ID":"0002","Password":"2222"}}
+				{"doctor":{"Doctor_ID":"44444444","Name":"Jim","hospital_ID":"0002","Password":"4444"}}
+
+
+		45:
+			collection:
+				1.patient information: Patient
+				2. clical detection:   ClinicalDetection
+				3. examination:        Examination
+				4. doctor information: Doctor
+
+				{"doctor":{"Doctor_ID":"33333333","Name":"Lily","hospital_ID":"0003","Password":"3333"}}
+				
+
+
+sql server password:
+
+	Software2014+-
+
+
+
+
+2015-9-21
+	
+	load Data
+
+	
+
 
 
 
