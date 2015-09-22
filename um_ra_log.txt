@@ -214,7 +214,7 @@ collecton:  PatientRecords
 
 					"IDCardNO":"73002",
 
-					"Date":"2013"
+					"Date":"2013	"
 
 					"HemodialysisChartRecordSet":
 													{
