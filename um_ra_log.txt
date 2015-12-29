@@ -71,6 +71,14 @@ patientindex
 
 {"patientid": "11111111", "host": "10.119.180.43", "port":"27017", "database": "ehrprivacy", "collection": "patientrecord"}
 
+
+
+{"patient":{"Patient_ID":"73002","Record_ID":"00001","Hospital_ID":"kw","host":"10.119.180.43","port":"27017","database":"EhrPrivacy","collection":"PatientRecords"}}
+{"patient":{"Patient_ID":"73002","Record_ID":"00002","Hospital_ID":"uh","host":"10.119.180.44","port":"27017","database":"EhrPrivacy","collection":"PatientRecords"}}
+{"patient":{"Patient_ID":"73002","Record_ID":"00003","Hospital_ID":"gov","host":"10.119.180.45","port":"27017","database":"EhrPrivacy","collection":"PatientRecords"}}
+
+
+
 patientrecord:
 
 {"patientid":"11111111",.............others informations}
@@ -203,13 +211,15 @@ HospitalID:
 
 collection: PatientInfo
 
-{"patient":{"IDCardNO":"73002","HospitalID":"hw","PatientName":"杨英英","HomeAddress":"贡士旦旬奴街","Sex":"M","DateOfBirth":""06/03/56,"Nationality":"东莞市","BloodType":"A","BloodTypeRH":"RH+"}}
+{"patient":{"IDCardNO":"73002","HospitalID":"hw","PatientName":"杨英英","HomeAddress":"贡士旦旬奴街","Sex":"M","DateOfBirth":""06/03/56,"Nationality":"东莞市","BloodType":"A","BloodTypeRH":"RH"}}
 
 
 collecton:  PatientRecords
 
 {"patientRecord":
 				{
+					"PatientRecordID":"00001",
+
 					"HospitalID":"uh",
 
 					"IDCardNO":"73002",
@@ -305,4 +315,814 @@ patient index collection: PatientIndex
 {"patient":{"Patient_ID":"73002","host":"10.119.180.44","port":"27017","database":"EhrPrivacy","collection":"PatientInfo"}}
 {"patient":{"Patient_ID":"73002","host":"10.119.180.45","port":"27017","database":"EhrPrivacy","collection":"PatientInfo"}}
 
+patient informations collection : PatientInfoIndex
 
+
+
+
+stackflow password Lp825653553!
+
+
+
+
+
+$.ajax({
+				type: 'GET',
+				/* url: 'http://10.119.180.39:8080/authdoctor?username='  $('#inputUserName').val()  '&password='  $('#inputPassword').val(), */
+				url: 'http://10.119.180.39:8080/authdoctor?username=doctorgov&password=123456',
+				/* dataType:'json', */
+				success: function(data){
+					alert("success");
+					// Login 
+					
+				},
+				error: function(error){
+					alert("error");
+				}
+			}); 
+
+
+jquery access RESTful data 
+
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en install 
+
+
+
+
+
+$.ajax({
+				type: 'GET',
+				url: 'http://10.119.180.39:8080/authdoctor?username='  $('#inputUserName').val()  '&password='  $('#inputPassword').val(),
+				/* url: 'http://10.119.180.39:8080/authdoctor?username=doctorgov&password=123456', */
+				/* dataType:'json', */
+				crossDomain: true,
+				success: function(data){
+					alert(data.token);
+					// Login 
+					$.ajax({
+						url: 'login',
+						type: 'POST',
+						data:{
+							username:$('#inputUserName').val(),
+							tokens: result
+						},
+						success: function(result){
+							
+						}
+					});
+					
+				},
+				error: function(error){
+					alert("error");
+				}
+			}); 
+
+$.ajax({
+				type: 'GET',
+				url: 'http://10.119.180.39:8080/authdoctor?username='  $('#inputUserName').val()  '&password='  $('#inputPassword').val(),
+				/* url: 'http://10.119.180.39:8080/authdoctor?username=doctorgov&password=123456', */
+				/* dataType:'json', */
+				crossDomain: true,
+				success: function(data){
+					alert(data.token);
+					// Login 
+					/* $.ajax({
+						url: 'login1',
+						type: 'POST',
+						data:{
+							username:$('#inputUserName').val(),
+							tokens: data.token
+						},
+						success: function(result){
+							
+						}
+					});  */
+					
+					$.post('login1',
+							{tokens: data.token},
+							function(){
+								
+							});
+					
+				},
+				error: function(error){
+					alert("error");
+				}
+			}); 
+
+
+
+
+
+var url = 'http://10.119.180.39:8080/authdoctor?username='  $('#inputUserName').val()  '&password='  $('#inputPassword').val();
+			
+			$.get(url,function(data){
+				alert(data.token);
+				$.post('login1',
+						{tokens: data.token},
+						function(){
+							
+						});
+			});
+
+
+➜  node_modules  npm install -g mongoose 
+/
+> kerberos@0.0.14 install /usr/local/lib/node_modules/mongoose/node_modules/mongodb/node_modules/mongodb-core/node_modules/kerberos
+> (node-gyp rebuild) || (exit 0)
+
+
+
+Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.
+
+
+
+==========================================================================================================================================================================
+
+
+Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.
+
+
+gyp ERR! build error 
+gyp ERR! stack Error: `make` failed with exit code: 69
+gyp ERR! stack     at ChildProcess.onExit (/usr/local/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:269:23)
+gyp ERR! stack     at ChildProcess.emit (events.js:110:17)
+gyp ERR! stack     at Process.ChildProcess._handle.onexit (child_process.js:1074:12)
+gyp ERR! System Darwin 14.5.0
+gyp ERR! command "node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mongoose/node_modules/mongodb/node_modules/mongodb-core/node_modules/kerberos
+gyp ERR! node -v v0.12.7
+gyp ERR! node-gyp -v v2.0.1
+gyp ERR! not ok 
+mongoose@4.1.8 /usr/local/lib/node_modules/mongoose
+
+solution:
+
+sudo xcodebuild -license
+
+[space] to end 
+
+type : agree
+
+success!
+
+==============================================================================================================================================================================
+
+Log system
+
+42:
+
+	1. database: Log
+
+	collection:  Trackers
+	
+	{"username":"tracker1","password":"123"}
+	{"username":"tracker2","password":"123"}
+	{"username":"tracker3","password":"123"}
+	{"username":"tracker4","password":"123"}
+	{"username":"tracker5","password":"123"}
+	collection: Logs
+
+	mongoimport -d Log -c Trackers tracker.json
+
+
+
+
+
+Tomcat install
+
+
+JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre/bin/java
+CATALINA_HOME=/opt/tomcat
+
+
+
+dao config properties:
+
+
+# patient record index
+patientindexhost=10.118.180.42
+patientindexport=27017
+patientindexdatabase=EhrPrivacy
+patientindexcollection=PatientIndex
+
+#patient info index:
+patientinfoindexhost=10.119.180.42
+patientinfoindexport=27017
+patientinfoindexdatabase=EhrPrivacy
+patientinfoindexcollection=PatientInfoIndex
+
+#trackers 
+trackernodehost=10.119.180.42
+trackernodeport=27017
+trackernodedatabase=Log
+trackernodecollection=Trackers
+
+http://javaee.mydreamy.net/manager/html
+
+
+
+
+
+public static MongoCollection<Document> getCollection(String db,String collection){
+		
+		MongoClient client = new MongoClient("localhost",27017);
+		
+		try {
+			 MongoDatabase database = client.getDatabase(db);
+		        
+		     MongoCollection<Document> collection = database.getCollection(collection);
+		        
+		     
+		} finally {
+			// TODO: handle finally clause
+			client.close();
+		}
+	
+       
+	}
+
+
+
+jquery back to previous poge
+
+<a href="javascript:history.back()">Go Back</a>
+
+
+
+spring bean annotation
+
+
+
+
+
+
+MongoClient client = new MongoClient("localhost",27017);
+		
+		try {
+			 MongoDatabase database = client.getDatabase("db");
+		        
+		     MongoCollection<Document> collection = database.getCollection("ehealthdata");
+		     
+		     MongoCursor<Document> cursor = collection.find().iterator();
+				
+		        while(cursor.hasNext()){
+		        	
+		        	EHealthRecord eHealthRecord = EhealthRecordConverter.toEHealthRecord(cursor.next());
+		        	
+		        	if(eHealthRecord != null){
+		        		results.add(eHealthRecord);
+		        	}
+		        }		
+				return results;
+		        
+		     
+		} finally {
+			// TODO: handle finally clause
+			client.close();
+		}
+
+
+
+if(collection != null){
+				collection = null;
+			}
+
+
+
+=====================================================================================
+
+根据病例   显示 病症和对应的药
+
+bing1: m1,m2,m3....
+bing2: m4,m5,...
+bing3: m6,m7,.....
+
+{bing1:[m1,m2,m3,m4],
+
+
+
+{record:{no:1,bing1:[m1,m2,m3,m4],bing2:[s]}}
+
+=====================================================================================
+
+learn impress.js!!!!
+
+
+{"illness":"感冒","medicines":["贯众","茵陈蒿","黄芪","野菊花","香薷","柴胡","食醋","生石
+膏"]}
+
+{"illness":"咳嗽","medicines":["车前草","酸橙","仙人掌","山楂根","木蝴蝶","紫菀露"]}
+
+{"illness":"慢性支气管炎","medicines":["黄荆子","青蒿油","蚤休","淫羊藿","辣椒棵","龙葵果"]}
+
+{"illness":"哮喘","medicines":["巴豆","补骨脂","椒目","醉鱼草","紫河车","灵芝","川芎嗪","慈竹沥","生姜","雷公藤"]}
+
+{"illness":"咯血","medicines":["地榆","蛇总管","人参","肺形草","阿胶"]}
+
+
+
+
+[{"illness":"感冒","medicines":["贯众","茵陈蒿","黄芪","野菊花","香薷","柴胡","食醋","生石膏"]},{"illness":"咳嗽","medicines":["车前草","酸橙","仙人掌","山楂根","木蝴蝶","紫菀露"]},{"illness":"慢性支气管炎","medicines":["黄荆子","青蒿油","蚤休","淫羊藿","辣椒棵","龙葵果"]},{"illness":"哮喘","medicines":["巴豆","补骨脂","椒目","醉鱼草","紫河车","灵芝","川芎嗪","慈竹沥","生姜","雷公藤"]},{"illness":"咯血","medicines":["地榆","蛇总管","人参","肺形草","阿胶"]}]
+
+
+
+var position_x = [-500,0,500,1000,-1000,1500,-1500];
+var position_y = [-500,0,500,-1000,1000,-1500,1500];
+var rotate = [0,90,180,270,20,30,60,10];
+var scale = [1,2,3,4,3,2,3,4,2,3,4,2,3,1,2,3,4];
+
+var obj = JSON.parse(text);
+
+var objLength = obj.length;
+
+
+for (var i = 0; i < objLength; i++){
+    
+    var content = '<strong>ill: ' + obj[i].illness + '</strong><br><br>medicines: ';
+    for(var j = 0; j < obj[i].medicines.length; j++){
+        if( j == obj[0].medicines.length-1){
+            content += obj[i].medicines[j];
+        }else{
+            content += obj[i].medicines[j] + ',';
+        }
+    }
+//    console.log(content);
+    $("#impress").append("<div class='step slide' data-x='" + position_x[i] + "' data-y='" + position_y[i] + "'  data-rotate='" + rotate[i] + "' data-scale='" + scale[i] + "'>" + content + "</div>");
+}
+
+
+draw the element of illness and medicines framework: JointJS
+
+
+
+
+  <script type="text/javascript">
+
+            var graph = new joint.dia.Graph;
+
+            var paper = new joint.dia.Paper({
+                el: $('#myholder'),
+                width: 600,
+                height: 200,
+                model: graph,
+                gridSize: 1
+            });
+
+            var rect = new joint.shapes.basic.Rect({
+                position: { x: 100, y: 30 },
+                size: { width: 100, height: 30 },
+                attrs: { rect: { fill: 'blue' }, text: { text: 'my box', fill: 'white' } }
+            });
+
+            var rect2 = rect.clone();
+            rect2.translate(300);
+
+            var link = new joint.dia.Link({
+                source: { id: rect.id },
+                target: { id: rect2.id }
+            });
+
+            graph.addCells([rect, rect2, link]);
+              console.log('jongi success');
+
+          </script>
+
+
+
+
+
+free vertor art software :
+
+
+1. https://inkscape.org/zh/
+
+2. 10 free software:  http://www.freevector.com/news/free-design-programs/
+
+
+The new js framework -----AniJS
+
+Green Sock
+
+
+｛
+	"RecordID":"",
+	"PatientID":"",
+	"PatientName":"",
+	"PatientAge":"",
+	"PatientSex":"",
+
+｝
+
+
+--------------------------------------------------------------------
+new record structure.!!!
+
+{"patientRecord":
+				{
+					"PatientRecordID":"00001",
+
+					"HospitalID":"uh",
+
+					"IDCardNO":"73002",
+
+					"Date":"2015-9-30",
+
+					"HemodialysisChartRecordSetRecord":
+													{
+														"Times":"1",
+														"DialyserBlockage":"No",
+														"UNIT":"D-4",
+														"Diaysate":"03",
+														"Dialyser":"H:18",
+														"VascularAccess":"RAVF",
+														"PreWeight":"60.6",
+														"DryWeight":"58",
+														"TargetLoss":"2.5",
+														"PostWeight":"58.5",
+														"Duration":"4",
+														"Program":"0",
+														"KCI":"100",
+														"NetLoss":"2.0"
+
+													},
+					"HemodialysisBeforeRecord":[
+								{"Time":"13:00","PumpSpeed":"280","VenPress":"136","TMP":"42","TEMP":"
+								36.5","COND":"140","UF":"0.3"},
+								{"Time":"14:00","PumpSpeed":"250","VenPress":"112","TMP":"34","TEMP":"
+								37.5","COND":"143","UF":"0.3"},
+								{"Time":"15:00","PumpSpeed":"245","VenPress":"144","TMP":"43","TEMP":"
+								38.5","COND":"142","UF":"0.4"},
+								{"Time":"16:00","PumpSpeed":"260","VenPress":"123","TMP":"45","TEMP":"
+								37.5","COND":"136","UF":"0.5"},
+								{"Time":"17:00","PumpSpeed":"230","VenPress":"122","TMP":"56","TEMP":"
+								36.5","COND":"145","UF":"1.2"}
+							],
+					"LMWH":"clexane 20 mg",
+					"Erythropoietin":"Depo 40ug iv",
+					"Zempler":"5mg iv",
+					"Venofar":"0.9% N.S 100ml Venofer 100mg iv",
+
+					"BloodPressRecord":[
+									{"HighPress":"180","LowPress":"70","Pulse":"90","TourNurse":"曾"},
+									{"HighPress":"154","LowPress":"80","Pulse":"80","TourNurse":"曾"},
+									{"HighPress":"132","LowPress":"74","Pulse":"84","TourNurse":"曾"},
+									{"HighPress":"144","LowPress":"67","Pulse":"87","TourNurse":"曾"},
+									{"HighPress":"146","LowPress":"65","Pulse":"67","TourNurse":"曾"}
+								],
+					"ResponseNurse":"李丽",
+					"PreTem":"36",
+					"Comments":"3",
+					"StartNurse":"曾",
+					"CheckNurse":"李",
+					"CloseNurse":"王",
+					"WithdrawalNurse":"陈",
+					"Doctor":"Dr. Tom"
+
+}
+
+
+PatientRecords
+43
+
+Mat source = imread("/Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/LJin-0.jpg");
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+Image process
+
+2015-10-13
+
+主要工作：
+	
+	1 图像预处理； 
+		主要目的是：对图像二值化，去躁， 生成预处理之后的图像；
+
+		添加手工处理
+
+	2 特征提取；
+	3 自动图像生成；
+
+
+
+	pixel ---> vectogram
+
+	1. opencv process image to get gray images;
+	2. Canny to get the border of images;
+	3. process the border of images;
+	4. Bezier curve fitting of the border images and get the vectogram.
+
+
+	工作：
+		1。 灰白化全部图像，并保存一份；
+		2. 滤波处理之后，保存一份；
+		3. 提取边界之后，在保存一份；
+		4， 边界合成到灰白图片，并保存一份；
+
+
+
+
+    // Dilation
+    
+    Mat dilation_element = getStructuringElement(dilation_type, Size(2*dilation_size + 1, 2*dilation_size + 1));
+    dilate(gray, gray, dilation_element);
+    
+    imshow("gray_dilate", gray);
+    imwrite("/Users/peterliu/Documents/openDevelopment/gray_dilate.bmp", gray);
+
+    
+    //Erosion
+    
+    Mat erosion_element = getStructuringElement(erosion_type, Size(2*erosion_size + 1, 2*erosion_size + 1));
+    erode(gray, gray, erosion_element);
+    
+    imshow("gray_erosion", gray);
+    imwrite("/Users/peterliu/Documents/openDevelopment/gray_erosion.bmp", gray);
+
+
+
+-------------------------------------------------------------------------------------------------------
+2015-10－15
+
+
+     insert code here...
+    
+         process101();
+        process102();
+         process103();
+         process104();
+         process105();
+         process106();
+         process107();
+         process108();
+         process109();
+         process110();
+         process111();
+         process112();
+         process113();
+         process114();
+    process115();
+     process116();
+     process117();
+     process118();
+     process119();
+     process120();
+     process121();
+     process122();
+     process123();
+     process124();
+     process125();
+     process126();
+     process127();
+     process128();
+     process129();
+     process130();
+     process131();
+     process132();
+     process133();
+     process134();
+     process135();
+     process136();
+
+    
+    
+     Load source image page.
+     Mat source = imread("/Users/peterliu/Documents/iOSDevelopment/OpenCVTutorials/LJin-0.jpg");
+    Mat source = imread("/Users/peterliu/Documents/openDevelopment/SF-Image/101.jpg");
+    Mat dst, edge, gray;
+    
+    if (source.empty()) {
+        cout << "Image load failed!" << endl;
+    }
+    imshow("Source", source);
+    
+   
+    
+    // Gaussian Filter
+    source.copyTo(dst);
+    for (int i = 1; i < MAX_KERNAL_LENGTH; i += 2) {
+        GaussianBlur(dst, dst, Size(i,i), GASSIONTHRESHOLD);
+    }
+//    GaussianBlur(source, dst, Size(GASSIONKERNALX,GASSIONKERNALX), GASSIONTHRESHOLD);
+
+    imshow("Dst", dst);
+    
+    cvtColor(dst, gray, CV_BGR2GRAY);
+//    gray = gray > GRAYTHRESHOLD;
+    threshold(gray, gray, 65, 255, CV_THRESH_BINARY);
+    
+    // 反色
+    bitwise_not(gray, gray);
+    GaussianBlur(gray, gray, Size(GASSIONKERNALX,GASSIONKERNALX), GASSIONTHRESHOLD);
+    GaussianBlur(gray, gray, Size(GASSIONKERNALX,GASSIONKERNALX), GASSIONTHRESHOLD);
+    threshold(gray, gray, 55, 255, CV_THRESH_BINARY);
+    
+    imshow("gray1", gray);
+    imwrite("/Users/peterliu/Documents/openDevelopment/processed/101-gray.jpg", gray);
+    
+    
+    
+    
+    
+
+    // Dilation
+    
+    Mat dilation_element = getStructuringElement(dilation_type, Size(2*dilation_size + 1, 2*dilation_size + 1));
+    dilate(gray, gray, dilation_element);
+    
+    imshow("gray_dilate", gray);
+    imwrite("/Users/peterliu/Documents/openDevelopment/gray_dilate.bmp", gray);
+
+    
+    //Erosion
+    
+    Mat erosion_element = getStructuringElement(erosion_type, Size(2*erosion_size + 1, 2*erosion_size + 1));
+    erode(gray, gray, erosion_element);
+    
+    imshow("gray_erosion", gray);
+    imwrite("/Users/peterliu/Documents/openDevelopment/gray_erosion.bmp", gray);
+
+
+    
+    
+    
+    dilate(gray, gray, dilation_element);
+    erode(gray, gray, erosion_element);
+//    erode(gray, gray, erosion_element);
+    
+
+    
+    imshow("Gray", gray);
+    imwrite("/Users/peterliu/Documents/openDevelopment/gray.bmp", gray);
+    
+    
+     Read the preprocess image
+    Mat newsource = imread("/Users/peterliu/Documents/openDevelopment/gray_tmp.bmp");
+    
+//    gray = HighLowConstrastSave(gray);
+//    imshow("Gray1", gray);
+    
+
+    blur(newsource, edge, Size(3,3));
+//
+//    // Canny
+    Canny(edge, edge, 3, 3);
+    imshow("Edge", edge);
+
+    waitKey(0);
+    destroyWindow("Source");
+    destroyWindow("Gray");
+    destroyWindow("Edge");
+
+
+-------------------------------------------------------------------------------------------------------
+2015-10－27
+
+CorelDraw 等矢量图工具文件格式：
+
+CDR file format
+
+
+解析CDR 文件格式
+
+CDR to SVG or SVG to CDR
+
+
+
+工具套件：
+1. 格式转化
+
+ImageMagick ： png ,jpg ,... to PNM
+
+
+command line:
+
+	convert image.jpg image.pnm
+
+(install method:  brew install ImageMagick)
+
+2. bitmap ----> Vector (svg file )
+
+Potrace : 
+
+
+-------------------------------------------------------------------------------------------------------
+2015-11-2
+
+the Skeleton of chinese image.
+
+//    static Point2 d[7] = {
+//        {0.0,0.0},
+//        {0.0,0.5},
+//        {1.1,1.4},
+//        {2.1,1.6},
+//        {3.2,1.1},
+//        {4.0,0.2},
+//        {4.0,0.0}};
+//    
+//    double error = 4.0;
+//    
+//    FitCurve(d, 7, error);
+//     process101();
+//     process102();
+//     process103();
+//     process104();
+//     process105();
+//     process106();
+//     process107();
+//     process108();
+//     process109();
+//     process110();
+//     process111();
+//     process112();
+//     process113();
+//     process114();
+//     process115();
+//     process116();
+//     process117();
+//     process118();
+//     process119();
+//     process120();
+//     process121();
+//     process122();
+//     process123();
+//     process124();
+//     process125();
+//     process126();
+//     process127();
+//     process128();
+//     process129();
+//     process130();
+//     process131();
+//     process132();
+//     process133();
+//     process134();
+//     process135();
+//     process136();
+    
+    
+    /* Thinning the image process */
+    //Read source file
+//    Mat src = imread("/Users/peterliu/Documents/openDevelopment/one.png");
+//    
+//    if(src.empty()){
+//        cout << "no image files" << endl;
+//    }
+//    
+//    Mat bw;
+//    
+//    cvtColor(src, bw, CV_BGR2GRAY);
+//    threshold(bw, bw, 10, 255, CV_THRESH_BINARY);
+////    bitwise_not(bw, bw);
+//    thinning(bw, bw);
+//    
+//    imshow("source", src);
+//    imshow("thinning", bw);
+//    
+//    waitKey(0);
+-------------------------------------------------------------------------------------------------------
+2015-11-9
+
+方式一：基于原有图形，进行绘制；
+
+1. 图像进行预处理，转成灰度图；
+2. 生成centerline图，获取相关的path上的点的坐标信息；
+3. 计算ellipse的ra, rb 以及切线方向；
+4. 保存path 路径信息；
+5. 根据path信息绘制图形；
+
+方式二： 根据特征进行绘制；
+
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+2015-12-29
+主要的工作有两个：
+1. EHealth系统的优化，重构；
+2. 中文书法的动画生成；
+
+其中，主要的是书法动画的工作：（需要对前期的工作做一些总结，然后修改一下工作的方向，调整一下思路，重新开始）
+
+前期的工作只是对基础知识有了一定的了解，但是和真正的研究还是有一定的差距的，而且也没有方向，很多的情况下都是一些编程的小技巧，无法从理论上实现。
+
+主要内容：
+
+1。 找到原图片，图片尺寸合理；
+2. Bezier Curve Fitting 算法；
+3. 简化 bezier curve control points 的数量；
+4. 确定书法的轨迹线；
+5. 根据bezier 算法确定书法的边界线 Edge 
+6， 将Edge 作为约束条件；
+
+
+
+
+
+
+
+                                     
